@@ -1,6 +1,6 @@
-CREATE DATABASE blog_tavs_uzvards;
+CREATE DATABASE blog_pujats;
 
-USE blog_tavs_uzvards;
+USE blog_pujats;
 
 CREATE TABLE posts(
 id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
