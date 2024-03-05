@@ -1,22 +1,36 @@
 <?php
 $config = require("config.php");
+
 require "function.php";
 require "Database.php";
 
-$query = "SELECT * FROM posts";
+$query = "SELECT * FROM posts JOIN categories on categories.id = posts.category_id";
+$params = [];
 if (isset($_GET["id"]) && $_GET["id"] != NULL) {
     $id = $_GET["id"];
-    $query = "SELECT * FROM posts WHERE id=$id";
+    $query .= " WHERE id=:id";
+    $params = [":id" => $id];
+}
+
+if (isset($_GET["name"]) && $_GET["name"] != NULL) {
+    $name = $_GET["name"];
+    $query .= " WHERE name=:name";
+    $params = [":name" => $name];
 }
 
 $db = new Database($config);
 $posts = $db
-        ->execute($query)
+        ->execute($query, $params)
         ->FetchAll();
 
 echo "<form>";
 echo "<input name='id' />";
-echo "<button>Submit</button>";
+echo "<button>Submit ID</button>";
+echo "</form>";
+
+echo "<form>";
+echo "<input name='name' />";
+echo "<button>Submit Category</button>";
 echo "</form>";
 
 echo "<h1>Posts</h1>";
