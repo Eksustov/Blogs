@@ -4,7 +4,7 @@ $config = require("config.php");
 require "function.php";
 require "Database.php";
 
-$query = "SELECT * FROM posts JOIN categories on categories.id = posts.category_id";
+$query = "SELECT * FROM posts";
 $params = [];
 if (isset($_GET["id"]) && $_GET["id"] != NULL) {
     $id = $_GET["id"];
@@ -13,7 +13,8 @@ if (isset($_GET["id"]) && $_GET["id"] != NULL) {
 }
 
 if (isset($_GET["name"]) && $_GET["name"] != NULL) {
-    $name = $_GET["name"];
+    $query = "SELECT * FROM posts JOIN categories on categories.id = posts.category_id";
+    $name = trim($_GET["name"]);
     $query .= " WHERE name=:name";
     $params = [":name" => $name];
 }
@@ -24,12 +25,12 @@ $posts = $db
         ->FetchAll();
 
 echo "<form>";
-echo "<input name='id' />";
+echo "<input name='id' value='" . ($_GET["id"] ?? "" ) . "' />";
 echo "<button>Submit ID</button>";
 echo "</form>";
 
 echo "<form>";
-echo "<input name='name' />";
+echo "<input name='name' value='" . ($_GET["name"] ?? "" ) . "' />";
 echo "<button>Submit Category</button>";
 echo "</form>";
 
