@@ -24,24 +24,5 @@ $posts = $db
         ->execute($query, $params)
         ->FetchAll();
 
-echo "<form>";
-echo "<input name='id' value='" . ($_GET["id"] ?? "" ) . "' />";
-echo "<button>Submit ID</button>";
-echo "</form>";
-
-echo "<form>";
-echo "<input name='name' value='" . ($_GET["name"] ?? "" ) . "' />";
-echo "<button>Submit Category</button>";
-echo "</form>";
-
-echo "<h1>Posts</h1>";
-
-//dd($posts);
-
-echo "<ul>";
-foreach($posts as $post) {
-    echo "<li>".$post["title"]."</li>";
-}
-echo "</ul>";
-
+    include "index.view.php";
 ?>
