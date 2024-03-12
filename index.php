@@ -24,5 +24,6 @@ $posts = $db
         ->execute($query, $params)
         ->FetchAll();
 
-    include "index.view.php";
+    $title = "MANI POSTI";
+    include "views/index.view.php";
 ?>
