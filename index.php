@@ -1,29 +1,16 @@
 <?php
-$config = require("config.php");
 
 require "function.php";
-require "Database.php";
 
-$query = "SELECT * FROM posts";
-$params = [];
-if (isset($_GET["id"]) && $_GET["id"] != NULL) {
-    $id = $_GET["id"];
-    $query .= " WHERE id=:id";
-    $params = [":id" => $id];
+$url_array = parse_url($_SERVER["REQUEST_URI"]);
+$url = $url_array["path"];
+
+if ($url == "/"){
+    require "controllers/index.php";
 }
-
-if (isset($_GET["name"]) && $_GET["name"] != NULL) {
-    $query = "SELECT * FROM posts JOIN categories on categories.id = posts.category_id";
-    $name = trim($_GET["name"]);
-    $query .= " WHERE name=:name";
-    $params = [":name" => $name];
+if ($url == "/about"){
+    require "controllers/about.php";
 }
-
-$db = new Database($config);
-$posts = $db
-        ->execute($query, $params)
-        ->FetchAll();
-
-    $title = "MANI POSTI";
-    include "views/index.view.php";
-?>
+if ($url == "/story"){
+    require "controllers/story.php";
+}
