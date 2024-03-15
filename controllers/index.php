@@ -21,7 +21,7 @@ if (isset($_GET["name"]) && $_GET["name"] != NULL) {
 $db = new Database($config);
 $posts = $db
         ->execute($query, $params)
-        ->FetchAll();
+        ->fetchAll();
 
     $title = "MANI POSTI";
     include "views/index.view.php";
