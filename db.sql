@@ -41,3 +41,8 @@ WHERE id = 2;
 SELECT * FROM posts 
 JOIN categories
 ON posts.category_id = categories.id;
+
+INSERT INTO posts
+(title, category_id)
+VALUES
+("Blog 3", '2');
