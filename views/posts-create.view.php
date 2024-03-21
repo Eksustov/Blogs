@@ -3,7 +3,7 @@
 <h1> Create a Post </h1>
 <form method="POST">
     <label>Title:
-        <input name="rail"/>
+        <input name="title"/>
     </label>
     <label>Category ID:
         <input name="category_id"/>
