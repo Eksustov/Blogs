@@ -39,6 +39,15 @@
     main{
         margin-left:10px;
     }
+    label {
+        position: relative;
+    }
+    .invalid-data {
+        position: absolute;
+        right:0;
+        top: 100%;
+        color: "red";
+    }
     </style>
 </head>
 <body>

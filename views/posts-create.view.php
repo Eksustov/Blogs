@@ -3,17 +3,22 @@
 <h1> Create a Post </h1>
 <form method="POST">
     <label>Title:
-        <input name="title"/>
+        <input name="title" value='<?= ($_POST["title"] ?? "" ) ?>'/>
+        <?php if (isset($errors["title"])) {?>
+        <p class="id-invalid"><?= $errors["title"] ?></p>
+        <?php } ?>
     </label>
     <label>Category ID:
-        <input name="category_id"/>
+        <select name="category_id">
+            <option value="1">Sport</value>
+            <option value="2">Music</value>
+            <option value="3">Food</value>
+        </select>
+        <?php if (isset($errors["category_id"])) {?>
+        <p class="id-invalid"><?= $errors["category_id"] ?></p>
+        <?php } ?>
     </label>
     <button>Save</button>
 </form>
 
-<ul>
-    <li>1 - sport</li>   
-    <li>2 - music</li> 
-    <li>3 - food</li>  
-</ul>
 <?php require "components/footer.php" ?>
