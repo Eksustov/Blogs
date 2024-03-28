@@ -24,5 +24,5 @@ $posts = $db
         ->fetchAll();
 
     $title = "MANI POSTI";
-    include "views/posts.view.php";
+    include "views/posts/index.view.php";
 ?>

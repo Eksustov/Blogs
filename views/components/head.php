@@ -48,6 +48,9 @@
         top: 100%;
         color: "red";
     }
+    .delete-form {
+        display:inline;
+    }
     </style>
 </head>
 <body>
