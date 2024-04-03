@@ -3,7 +3,7 @@ $config = require("config.php");
 
 require "Database.php";
 
-$query = "SELECT * FROM posts";
+$query = "SELECT posts.* FROM posts";
 $params = [];
 if (isset($_GET["id"]) && $_GET["id"] != NULL) {
     $id = $_GET["id"];
@@ -12,9 +12,8 @@ if (isset($_GET["id"]) && $_GET["id"] != NULL) {
 }
 
 if (isset($_GET["name"]) && $_GET["name"] != NULL) {
-    $query = "SELECT * FROM posts JOIN categories on categories.id = posts.category_id";
     $name = trim($_GET["name"]);
-    $query .= " WHERE name=:name";
+    $query .= "JOIN categories ON categories.id = posts.category_id WHERE name=:name";
     $params = [":name" => $name];
 }
 
