@@ -13,7 +13,7 @@ if (isset($_GET["id"]) && $_GET["id"] != NULL) {
 
 if (isset($_GET["name"]) && $_GET["name"] != NULL) {
     $name = trim($_GET["name"]);
-    $query .= "JOIN categories ON categories.id = posts.category_id WHERE name=:name";
+    $query = "SELECT posts.* FROM posts JOIN categories ON categories.id = posts.category_id WHERE name=:name";
     $params = [":name" => $name];
 }
 

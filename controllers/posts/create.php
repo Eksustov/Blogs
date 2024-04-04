@@ -1,20 +1,17 @@
 <?php
 $config = require("config.php");
 require "Database.php";
-// && trim($_POST["title"]) != "" && $_POST["category_id"] <=3 && strlen($_POST["title"]) <=255
+require "Validator.php";
+$validator = new Validator();
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $errors = [];
 
-    if (trim($_POST["title"]) == "") {
-        $errors["title"] = "Title cannot be empty";
+    if (!Validator::string($_POST["title"], min: 1, max:255)) {
+        $errors["title"] = "Title cannot be empty or too long";
     }
 
-    if ($_POST["category_id"] > 3) {
+    if (!Validator::int($_POST["category_id"], min: 1, max:3)) {
         $errors["category_id"] = "Category ID invalid";
-    }
-
-    if (strlen($_POST["title"]) > 255) {
-        $errors["title"] = "Title is too long";
     }
 
     if (empty($errors)) {
