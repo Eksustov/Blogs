@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $errors["title"] = "Title cannot be empty or too long";
     }
 
-    if (!Validator::int($_POST["category_id"], min: 1, max:3)) {
+    if (!Validator::number($_POST["category_id"], min: 1, max:3)) {
         $errors["category_id"] = "Category ID invalid";
     }
 
