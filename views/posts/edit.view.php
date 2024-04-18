@@ -10,9 +10,9 @@
     </label>
     <label>Category ID:
         <select name="category_id">
-            <option value="1" <?= $post["category_id"] == 1 ? "selected" : ""?>>Sport</value>
-            <option value="2" <?= $post["category_id"] == 2 ? "selected" : ""?>>Music</value>
-            <option value="3" <?= $post["category_id"] == 3 ? "selected" : ""?>>Food</value>
+            <option value="1" <?= ($_POST["category_id"] ?? $post["category_id"]) == 1 ? "selected" : ""?>>Sport</value>
+            <option value="2" <?= ($_POST["category_id"] ?? $post["category_id"]) == 2 ? "selected" : ""?>>Music</value>
+            <option value="3" <?= ($_POST["category_id"] ?? $post["category_id"]) == 3 ? "selected" : ""?>>Food</value>
         </select>
         <?php if (isset($errors["category_id"])) {?>
         <p class="id-invalid"><?= $errors["category_id"] ?></p>

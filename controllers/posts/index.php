@@ -1,4 +1,5 @@
 <?php
+guest();
 $config = require("config.php");
 
 require "Database.php";
